@@ -1,0 +1,319 @@
+  
+1.  BUSINESS  SCENARIO  
+A  Smart  Food  Delivery  Management  System  is  designed  to  connect  customers,  restaurants,  and  
+delivery
+ 
+drivers
+ 
+through
+ 
+a
+ 
+centralized
+ 
+platform.
+ 
+Customers
+ 
+can
+ 
+browse
+ 
+restaurant
+ 
+menus,
+ 
+place
+ 
+orders,
+ 
+and
+ 
+make
+ 
+payments,
+ 
+while
+ 
+restaurants
+ 
+prepare
+ 
+meals
+ 
+and
+ 
+drivers
+ 
+deliver
+ 
+them.
+ 
+The
+ 
+system
+ 
+ensures
+ 
+efficient
+ 
+coordination
+ 
+between
+ 
+all
+ 
+parties
+ 
+and
+ 
+maintains
+ 
+accurate
+ 
+records
+ 
+of
+ 
+all
+ 
+transactions.
+ 
+The  system  relies  on  a  relational  database  to  manage  structured  data  such  as  customers,  orders,  
+menu
+ 
+items,
+ 
+and
+ 
+deliveries.
+ 
+It
+ 
+ensures
+ 
+data
+ 
+integrity,
+ 
+supports
+ 
+concurrent
+ 
+transactions
+ 
+(e.g.,
+ 
+multiple
+ 
+customers
+ 
+placing
+ 
+orders
+ 
+simultaneously),
+ 
+and
+ 
+automates
+ 
+business
+ 
+processes
+ 
+like
+ 
+updating
+ 
+order
+ 
+status
+ 
+and
+ 
+assigning
+ 
+drivers.
+ 
+Additionally,
+ 
+it
+ 
+enables
+ 
+analytics
+ 
+such
+ 
+as
+ 
+tracking
+ 
+top-performing
+ 
+restaurants
+ 
+and
+ 
+delivery
+ 
+efficiency.
+ 
+2.  ENTITIES  WITH  ATTRIBUTES  (WITH  DATA  TYPES)  
+  
+ Customer  
+Attribute  Data  Type  Description  
+customer_id  INTEGER  (PK)  Unique  customer  ID  
+name  VARCHAR(20)  Customer  name  (Text  ≤  20  chars)  
+phone  VARCHAR(15)  Contact  number  
+address  VARCHAR(255)  Address  (Text  ≤  255  chars)  
+created_at  DATE  Account  creation  date  
+status  CHAR(1)  ('A','I')  (Single  char  limited)  
+  
+ 
+ 
+Restaurant  
+Attribute  Data  Type  Description  
+restaurant_id  INTEGER  (PK)  Unique  restaurant  ID  
+name  VARCHAR(20)  Restaurant  name  (Text  ≤  20  chars)  
+cuisine_type  VARCHAR(20)  ('Italian','Asian','FastFood')  (Limited  text  choices)  
+opening_time  DATE  Opening  time  
+closing_time  DATE  Closing  time  
+status  CHAR(1)  ('A','I')  (Single  char  limited)  
+  
+Menu_Item  
+Attribute  Data  Type  Description  
+item_id  INTEGER  (PK)  Unique  item  ID  
+restaurant_id  INTEGER  (FK)  References  Restaurant  (Foreign  Key)  
+name  VARCHAR(20)  Item  name  (Text  ≤  20  chars)  
+price  DECIMAL(8,2)  Item  price  (Decimal)  
+category  VARCHAR(20)  ('Meal','Drink','Dessert')  (Limited  text)  
+is_available  CHAR(1)  ('Y','N')  (Single  char  limited)  
+ Order  
+Attribute  Data  Type  Description  
+order_id  INTEGER  (PK)  Unique  order  ID  
+customer_id  INTEGER  (FK)  References  Customer  
+restaurant_id  INTEGER  (FK)  References  Restaurant  
+order_time  DATE  Order  timestamp  (Date)  
+status  VARCHAR(20)  ('Pending','Preparing','Delivered','Cancelled')  (Limited  text)  
+total_amount  DECIMAL(10,2)  Total  order  cost  (Decimal)  
+  
+ Order_Item  
+Attribute  Data  Type  Description  
+order_id  INTEGER  (FK,  PK)  
+References  Orders  
+item_id  INTEGER  (FK,  PK)  
+References  Menu_Item  
+quantity  INTEGER  Quantity  ordered  
+unit_price  DECIMAL(8,2)  Price  per  unit  
+subtotal  DECIMAL(10,2)  Calculated  subtotal  
+  
+ 
+ Driver  
+Attribute  Data  Type  Description  
+driver_id  INTEGER  (PK)  Unique  driver  ID  
+name  VARCHAR(20)  Driver  name  (Text  ≤  20  chars)  
+status  CHAR(1)  ('A','B')  (Single  char  limited)  
+total_deliveries  INTEGER  Total  deliveries  (Integer)  
+avg_rating  DECIMAL(3,2)  Driver  rating  (Decimal)  
+  
+ Delivery  
+Attribute  Data  Type  Description  
+delivery_id  INTEGER  (PK)  Unique  delivery  ID  
+order_id  INTEGER  (FK)  References  Orders  
+driver_id  INTEGER  (FK)  References  Driver  
+pickup_time  DATE  Pickup  time  (Date  +  Time)  
+delivery_time  DATE  Delivery  time  (Date  +  Time)  
+delivery_status  VARCHAR(20)  ('Assigned','Delivered')  
+  
+ 
+ 
+Payment  
+Attribute  Data  Type  Description  
+payment_id  INTEGER  (PK)  Unique  payment  ID  
+order_id  INTEGER  (FK)  References  Orders  
+amount  DECIMAL(10,2)  Payment  amount  
+method  VARCHAR(20)  ('Card','Cash')  
+status  CHAR(1)  ('Y','N')  
+payment_time  DATE  Payment  timestamp  (Date  +  Time)  
+  
+ Review  
+Attribute  Data  Type  Description  
+review_id  INTEGER  (PK)  Unique  review  ID  
+order_id  INTEGER  (FK)  References  Order  
+rating  INTEGER  Rating  (Integer)  
+comment  VARCHAR(255)  Review  comment  (Text  ≤  255  chars)  
+  
+ 
+ 
+Order_Status_Log   
+Attribute  Data  Type  Description  
+log_id  INTEGER  (PK)  
+Unique  log  ID  
+order_id  INTEGER  (FK)  
+References  Orders  
+old_status  VARCHAR(20)  
+Previous  status  
+new_status  VARCHAR(20)  
+New  status  
+change_time  DATE  Time  of  change  (Date  +  Time)  
+ 
+ 
+ 
+3.  ATTRIBUTE  TYPE  COVERAGE  
+Requirement  Where  Used  
+Primary  Keys  All  entities  (customer_id,  order_id,  etc.)  
+Foreign  Keys  order.customer_id,  order_item.item_id,  etc.  
+Integer  IDs,  quantity,  rating  
+Decimal  price,  total_amount  
+Date  order_time,  payment_time  
+Limited  Text  status,  category,  method  
+VARCHAR(20)  names,  categories  
+VARCHAR(255)  address,  comment  
+Single  Char  status  ('A','I'),  ('Y','N')  
+  
+ 
+ 
+
+
+ 
+ 
+—------------------------------------------------------------------------  
+Weights  &  Percentages  
+Tablespace  Weight  Percent  of  Total  
+DATA  100  28%  
+
+DATA_2  60  17%  
+INDEXES  80  22%  
+INDEXES_2  30  8%  
+UNDO  70  19%  
+TEMP  40  11%  
+SYSTEM  30  8%  
+USERS  50  14%  
+Total  360  100%  
+  
+  
+Tablespace  Distribution  Across  Disks  
+Disk  Number  Weight  Contents  (Tablespaces)  
+1  -  Oracle  Software  
+2  100  DATA  
+3  150  INDEXES,  UNDO  
+4  100  DATA_2,  TEMP  
+5  110  USERS,  INDEXES_2,  SYSTEM  
+—---------------------------------------------------------------------------  
+ 
+
+ 
+ 
+ 
+Users  and  accounts  
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+   https://chatgpt.com/share/69e13f26-38b8-832c-8aa7-dfb306f79f67  

@@ -1,0 +1,181 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ISTE 436 – Database Management and Access 
+Spring 2026 
+Project Description 
+ 
+Due date: April 29, 2026 at 12:00 PM 
+ 
+ 
+ 
+  
+
+ISTE 436  Project 
+  Page 2 of 5 
+Mission 
+In this project, you will build and administer an enterprise-level database system. You will apply all the 
+database concepts cultivated from your lab exercises and demonstrate a fully-functional relational 
+database management system. 
+Statement  
+Define a simple business scenario that typically uses relational databases for business basic operations. 
+Consult with your instructor and proceed only after the instructor approves your idea. Then, model the 
+database using an ER-Diagram. After that, use AWS EC2 to create and launch an Oracle database. Finally, 
+demonstrate different operations. Below are detailed steps. 
+1. (10 points) Define a business scenario where relational databases are needed. 
+a. Describe the scenario in two or three paragraphs. 
+b. Define a minimum of 4 entities along with their attributes. 
+c. Clearly define attribute types. You must have the following types somewhere: 
+i. Primary/foreign keys 
+ii. Integer, decimal, date 
+iii. Text of limited choices (e.g., Fall, Winter, Spring, and Summer) 
+iv. Text of up to 20 characters long (e.g., names) 
+v. Text of up to 255 characters long (e.g., comments) 
+vi. A single character of limited choices (e.g., Y/N, T/F, or L/M/S). 
+d. Use a computer-aided tool to draw an ER-Diagram that shows all the entities, their attributes, 
+and the relationships and their cardinalities (1:1, 1:M, M:M). Use the Crow Foot notation.  
+2. (10 points) Ideally, if you were to distribute datafiles across multiple disks based on use, how would 
+you go about this activity. Complete the weight assignment activity by filling Tables 1-2 and 2-1 from 
+document “ExerciseW0501-Wrights.docx”. Note that this activity will not impact your 
+implementation.  
+3. (10 points) Use a new AWS instance for this project. Do not follow on the same instance that you 
+have been using in the labs. You may look for an “Oracle Linux” instance, or you may launch the 
+original clean instance you started with in this course to make use of its stored scripts. Choose a 
+“Medium” instance. Assign a new AWS S3 volume to access the instance. 
+4. (10 points) Use DBCA to create your Oracle database. Create at least four user roles: 
+a. An admin who has the highest level of power. 
+b. A developer who is capable of creating tables. 
+c. Two end users who interact with the database to insert or retrieve data. 
+5. (10 points) Use the developer role to create tablespaces and tables. Fill in some tables with dummy 
+data from a text file or a CSV file. Do not use INSERT INTO for bulk data insertion. 
+ISTE 436  Project 
+  Page 3 of 5 
+6. (10 points) Configure the database to listen for remote connections. Simultaneously connect two 
+end users to the database. Make sure the end users are authenticated and authorized to do their 
+relevant tasks. Explain the importance of such a security practice. 
+7. (20 points) Manage and demonstrate concurrent transactions.  
+8. (10 points) Demonstrate the following SQL queries: 
+a. Perform a meaningful join operation. 
+b. Showcase the use of grouping, sorting, displaying unique records, two numerical functions, and 
+two string manipulation functions. You do not have to create a single query for each. 
+c. Create a view of your own choosing. 
+9. (10 points) Backup: 
+a. Explain the importance of backup.  
+b. Develop a backup strategy. 
+c. Backup your database. 
+d. Explain the rationale behind your choice of your backup strategy.   
+ISTE 436  Project 
+  Page 4 of 5 
+Deliverable  
+This is a group-based project. Form a group of three students, and all of you must join an available group 
+on myCourses → Groups. Your team will submit a PDF report, PPT presentation, and all supporting files, 
+such as SQL and Linux script files.  
+Report 
+Your report will be marked out of 100 points, which constitutes 10% of the total course grade. Your 
+report must contain the following components/sections. 
+1. Include a cover page/slide with course title, assessment title, students’ names and IDs, date, and 
+group#. 
+2. Page 2: Manifesto 
+a. Clearly state the contributions of each team members. 
+b. If all team members contributed equally to the project, specify how.  
+c. If (b) above is not the case, then the manifesto must specify who did what. Students will be 
+graded based on their contribution to the team. 
+d. A complete work is still expected regardless who contributed to the work.  
+e. Not submitting a manifesto results in losing 20% of the project grade. 
+3. Page 3: Table of contents that clearly list each section/subsection and its related page. 
+4. Page 4: Create a section for each step. Each step and choice must be accompanied by proper 
+explanation and screenshots. 
+5. Your report must be clearly written and organized, otherwise, marks will be deducted.  
+Presentation  
+Along with your report, you must also submit a presentation. All team members must be present in-
+person during the presentation. Failure to do so will result in a zero on the whole project for the missing 
+team member. Your team will present their work to me as per the specified deadline on the cover page 
+of this document. The work must be submitted on time regardless when the scheduled presentation 
+timeslot is.  
+Your presentation will be marked out of 100 points, which constitutes 15% of the total course grade. 
+The presentation will be evaluated based on the following criteria: 
+1. (20 points) The presentation must be organized: 
+a. Cover slide that has course#, students’ names, group#, and date 
+b. Manifesto  
+c. Table of contents  
+d. Summary of business scenario 
+2. (60 points) Speak clearly, no stuttering, muttering, or reading from notes 
+a. Your presentation must reflect your full understanding of intricacies involved in building and 
+administering the database system. 
+b. You must be able to demo all the basic business operations to your scenario.  
+c. You must be able to answer the instructor’s questions when asked. 
+d. Inability to answer instructor’s questions will negatively affect your presentation grade. 
+e. You are allocated 10 minutes + 5 minutes of Q&A. Be strict with timing.  
+3. (20 points) The presentation must include snippets of each major script written. 
+ISTE 436  Project 
+  Page 5 of 5 
+Submission 
+This is a group-based project. You will work in a team of exactly three students. Your team will submit 
+(1) a PDF report along with all supporting files, such as SQL and Linux script files, and (2) PPT 
+presentation, to (1) myCourses → Assignments → Report, and (2) myCourses → Assignments → 
+Presentation 
+Note that only a single submission per team is required. You will submit your work as a group, not 
+individually. The submission of all files must be done by the deadline date and time shown on the cover 
+page of this document. The file name structures are as follows, where “Group#” is your group number: 
+Group#_Report.pdf, Group#_Presentation.ppt, Group#_SuppFile#. 
+Turnitin will be active, and you will be able to see your Similarity Score. Similarity Scores above 20% will 
+result in an automatic mark of zero. You have the option to resubmit your report if you wish to modify it 
+before the deadline. The portion of the Similarity Score that generates from copying parts of this report 
+or listing references, does not contribute toward the 20% limit. Moreover, you are not allowed to use AI 
+tools to draw or write any component of your report.  
+Summary of Grading 
+ Your work will be marked as per the below distribution: 
+  
+ 
+ 
+Rubric 
+Each step will be evaluated against the below rubric: 
+Step Points 
+Steps 1-3 10 each 
+Step 4, 7 20 each 
+Steps 5-6, 8 10 each 
+Total 100   
+Note: Not including a manifesto will result in 
+deducting 20 points 
+Requirement Points 
+Organization 20 
+Answering instructor’s questions 60 
+Snippets from scrips 20 
+Total 100 
+Table 1: Report Grading 
+Table 2: Presentation Grading 
+Rubric R1 R2 R3 R4 R5 
+ •The step has not been 
+attempted, or 
+•The provided solution 
+contains several major 
+flaws that reflect critical 
+weaknesses 
+•The provided solution 
+is abstract and requires 
+major improvement or 
+additional details 
+•The provided solution 
+suffers from one or two 
+major flaws, but enough 
+details are provided 
+•The provided solution 
+suffers from one or two 
+minor flaws, and 
+enough details are 
+provided 
+•The provided solution 
+is complete, does not 
+suffer from any flaws, 
+and includes all 
+required details 
+Points 0 40 60 80 100 
+ 

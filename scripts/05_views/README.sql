@@ -1,0 +1,5 @@
+-- This folder contains views for access control and reporting.
+-- Run order:
+--   @row_level_views.sql
+--   @column_level_views.sql
+--   @grants_on_views.sql

@@ -1,0 +1,8 @@
+table_name,pk_id,col1,col2,col3,col4,col5,col6
+customer,1,Alice,555-0001,10 Oak St,A,,
+customer,2,Bob,555-0002,20 Pine St,A,,
+restaurant,1,QuickBites,FastFood,,,,A
+menu_item,1,1,ChickenBowl,12.50,Meal,Y,1
+menu_item,2,1,VeggieBowl,10.00,Meal,Y,10
+driver,1,Dana,A,0,4.70,,
+driver,2,Evan,A,0,4.50,,
