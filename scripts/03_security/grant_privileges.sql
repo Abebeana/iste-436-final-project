@@ -78,11 +78,25 @@ GRANT admin_full_access_role TO admin_role;
 -- Note: these are SYSTEM privileges; you typically must run this section as DBA.
 PROMPT Granting developer system privileges (DBA-only; continues on error)...
 WHENEVER SQLERROR CONTINUE
+GRANT CREATE SESSION TO developer_role;
 GRANT CREATE TABLE TO developer_role;
+GRANT CREATE INDEX TO developer_role;
 GRANT CREATE VIEW TO developer_role;
 GRANT CREATE SEQUENCE TO developer_role;
 GRANT CREATE PROCEDURE TO developer_role;
 GRANT CREATE TRIGGER TO developer_role;
+GRANT CREATE TYPE TO developer_role;
+GRANT CREATE CLUSTER TO developer_role;
+
+-- Powerful DBA-only privileges (use with care; enables access to any schema's tables)
+GRANT INSERT ANY TABLE TO developer_role;
+GRANT UPDATE ANY TABLE TO developer_role;
+GRANT DROP ANY TABLE TO developer_role;
+GRANT ALTER ANY TABLE TO developer_role;
+GRANT COMMENT ANY TABLE TO developer_role;
+
+-- Note: there is no Oracle system privilege named "BACKUP ANY TABLE".
+-- Backups are typically performed via RMAN / OS-level access or DBA workflows.
 WHENEVER SQLERROR EXIT SQL.SQLCODE
 
 PROMPT Done granting privileges.

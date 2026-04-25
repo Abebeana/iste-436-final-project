@@ -1,0 +1,2 @@
+payment_id,order_id,amount,method,status,payment_time
+1,1,12.50,Card,Y,

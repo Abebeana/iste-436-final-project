@@ -1,0 +1,3 @@
+item_id,restaurant_id,name,price,category,is_available,stock_qty
+1,1,ChickenBowl,12.50,Meal,Y,1
+2,1,VeggieBowl,10.00,Meal,Y,10

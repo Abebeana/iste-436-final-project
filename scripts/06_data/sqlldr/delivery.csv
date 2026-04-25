@@ -1,0 +1,2 @@
+delivery_id,order_id,driver_id,pickup_time,delivery_time,delivery_status
+1,1,1,,,Assigned

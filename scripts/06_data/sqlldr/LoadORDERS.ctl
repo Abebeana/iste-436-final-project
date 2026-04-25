@@ -1,0 +1,15 @@
+OPTIONS (SKIP=1)
+LOAD DATA
+INFILE 'orders.csv'
+APPEND
+INTO TABLE orders
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+TRAILING NULLCOLS
+(
+  order_id       INTEGER EXTERNAL,
+  customer_id    INTEGER EXTERNAL,
+  restaurant_id  INTEGER EXTERNAL,
+  order_time     DATE "YYYY-MM-DD HH24:MI" NULLIF order_time=BLANKS,
+  status         CHAR,
+  total_amount   DECIMAL EXTERNAL
+)

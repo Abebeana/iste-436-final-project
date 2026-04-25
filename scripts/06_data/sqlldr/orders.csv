@@ -1,0 +1,2 @@
+order_id,customer_id,restaurant_id,order_time,status,total_amount
+1,1,1,2026-04-25 10:00,Pending,12.50
