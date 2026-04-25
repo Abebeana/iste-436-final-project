@@ -75,7 +75,14 @@ GRANT view_menu_role TO restaurant_role;
 GRANT admin_full_access_role TO admin_role;
 
 -- Developer job role (object creation in your own schema)
--- Note: these are system privileges; in a restricted environment you may not have them.
--- GRANT CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SEQUENCE TO developer_role;
+-- Note: these are SYSTEM privileges; you typically must run this section as DBA.
+PROMPT Granting developer system privileges (DBA-only; continues on error)...
+WHENEVER SQLERROR CONTINUE
+GRANT CREATE TABLE TO developer_role;
+GRANT CREATE VIEW TO developer_role;
+GRANT CREATE SEQUENCE TO developer_role;
+GRANT CREATE PROCEDURE TO developer_role;
+GRANT CREATE TRIGGER TO developer_role;
+WHENEVER SQLERROR EXIT SQL.SQLCODE
 
 PROMPT Done granting privileges.

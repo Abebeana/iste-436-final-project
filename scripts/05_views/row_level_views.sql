@@ -1,8 +1,7 @@
+-- Done
 -- Context:
 -- ISTE-436 Views
 -- "Row-level" views used to restrict rows by business rules.
--- (True per-user row filtering typically requires a mapping table + application context/VPD;
--- this script keeps it simple and rubric-friendly.)
 
 PROMPT Creating row-filtered views...
 
