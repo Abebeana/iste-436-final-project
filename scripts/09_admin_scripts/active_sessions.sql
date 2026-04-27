@@ -1,4 +1,3 @@
--- Context:
 -- Admin script (may require DBA privileges)
 
 PROMPT Active sessions (requires access to V$SESSION)

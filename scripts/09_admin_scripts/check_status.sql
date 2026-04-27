@@ -1,4 +1,3 @@
--- Context:
 -- Admin script (may require DBA privileges)
 
 PROMPT Instance status (requires access to V$INSTANCE)

@@ -1,4 +1,3 @@
--- Context:
 -- ISTE-436 required query demonstrations
 -- Includes: join, grouping, sorting, DISTINCT, numeric functions, string functions.
 

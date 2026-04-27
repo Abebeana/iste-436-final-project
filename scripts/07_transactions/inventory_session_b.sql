@@ -1,13 +1,12 @@
--- Context:
--- Concurrency demo: inventory (lost update prevention)
--- Session B
-
+SET DEFINE OFF
 SET SERVEROUTPUT ON
+
+CONNECT cust_2/"Food123"
 
 VARIABLE order_id NUMBER
 
-PROMPT Session B: placing order for item_id=1 quantity=1 (run near-simultaneously with Session A)
+PROMPT B: order item_id=1 qty=1 (run near same time)
 EXEC fd_orders_pkg.place_single_item_order(2, 1, 1, 1, :order_id);
 PRINT order_id
 
-PROMPT Session B done.
+PROMPT B: done
