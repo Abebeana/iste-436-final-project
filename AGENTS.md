@@ -39,7 +39,7 @@ use this practical multi-user order:
   - [scripts/03_security/create_roles.sql](scripts/03_security/create_roles.sql)
   - [scripts/03_security/create_users.sql](scripts/03_security/create_users.sql)
   - [scripts/03_security/grant_system_privileges.sql](scripts/03_security/grant_system_privileges.sql)
-    - Note: `developer_role` includes `CREATE TABLESPACE` and `UNLIMITED TABLESPACE`
+    - Note: `developer_role` includes `CREATE TABLESPACE`; `UNLIMITED TABLESPACE` is granted directly to `dev_1` (Oracle 12c doesn't allow it to a role)
 3. As `dev_1` (developer role enabled): create tablespaces, then create tables/constraints/indexes
   - [scripts/01_db_setup/create_tablespaces.sql](scripts/01_db_setup/create_tablespaces.sql)
   - [scripts/02_schema/install.sql](scripts/02_schema/install.sql)
