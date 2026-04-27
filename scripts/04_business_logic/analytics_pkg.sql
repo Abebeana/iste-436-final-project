@@ -1,3 +1,10 @@
+-- =====================================================================
+-- Smart Food Delivery (ISTE-436)
+-- Phase: 04_business_logic
+-- Run as: dev_1 (schema owner)
+-- Run: @scripts/04_business_logic/analytics_pkg.sql
+-- =====================================================================
+
 -- Context:
 -- Smart Food Delivery Management System (ISTE-436)
 -- Simple analytics procedure(s). For multi-statement consistency, prefer using

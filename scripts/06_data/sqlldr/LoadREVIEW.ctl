@@ -9,5 +9,5 @@ TRAILING NULLCOLS
   review_id    INTEGER EXTERNAL,
   order_id     INTEGER EXTERNAL,
   rating       INTEGER EXTERNAL,
-  comment      CHAR
+  review_comment      CHAR "TRIM(:review_comment)"
 )

@@ -11,5 +11,5 @@ TRAILING NULLCOLS
   restaurant_id  INTEGER EXTERNAL,
   order_time     DATE "YYYY-MM-DD HH24:MI" NULLIF order_time=BLANKS,
   status         CHAR,
-  total_amount   DECIMAL EXTERNAL
+  total_amount   "TO_NUMBER(REPLACE(REPLACE(:total_amount, CHR(13), ''), CHR(10), ''))"
 )

@@ -1,3 +1,11 @@
 customer_id,name,phone,address,status
 1,Alice,555-0001,10 Oak St,A
 2,Bob,555-0002,20 Pine St,A
+3,Cara,555-0003,30 Maple St,A
+4,Diego,555-0004,40 Birch St,A
+5,Ella,555-0005,50 Cedar St,A
+6,Finn,555-0006,60 Elm St,A
+7,Gia,555-0007,70 Spruce St,A
+8,Hank,555-0008,80 Walnut St,A
+9,Ivy,555-0009,90 Ash St,A
+10,Jo,555-0010,100 Cherry St,I

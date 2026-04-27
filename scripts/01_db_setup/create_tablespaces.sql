@@ -1,16 +1,12 @@
-
--- AWS VM (smartfood) layout:
---   ORACLE_BASE=/u01/app/oracle
---   ORACLE_HOME=/u01/app/oracle/product/12.2.0/db_1
---   ORACLE_SID=SFDB
---
--- Project datafile locations:
---   Base folders:
---     /u07/app/oracle/oradata/smartfood
---     /u08/app/oracle/oradata/smartfood
---   We keep app tablespaces separate from DBCA-managed SYSTEM/SYSAUX/UNDO/TEMP/USERS.
-
-PROMPT NOTE: Requires DBA privileges. Datafiles will be created under /u07 and /u08 (smartfood).
+-- =====================================================================
+-- Smart Food Delivery (ISTE-436)
+-- Phase: 01_db_setup (optional/admin)
+-- Run as: dev_1 with developer_role (CREATE TABLESPACE) OR a DBA user
+-- Purpose: Create DATA/DATA_2 and INDEXES/INDEXES_2 tablespaces used by schema/index scripts.
+-- Run: @scripts/01_db_setup/create_tablespaces.sql
+-- NOTE: Datafiles are created under /u07 and /u08 on the DB server.
+-- =====================================================================
+PROMPT NOTE: Requires CREATE TABLESPACE privilege. Datafiles will be created under /u07 and /u08 (smartfood).
 
 SET SERVEROUTPUT ON
 
@@ -38,8 +34,6 @@ PROMPT Creating tablespace INDEXES_2...
 CREATE TABLESPACE INDEXES_2
   DATAFILE '/u08/app/oracle/oradata/smartfood/indexes_201.dbf' SIZE 200M
   AUTOEXTEND ON NEXT 50M MAXSIZE UNLIMITED;
-
-PROMPT NOTE: USERS tablespace is typically created by DBCA; not creating it here.
 
 WHENEVER SQLERROR EXIT SQL.SQLCODE
 

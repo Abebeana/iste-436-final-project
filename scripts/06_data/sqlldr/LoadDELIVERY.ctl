@@ -11,5 +11,5 @@ TRAILING NULLCOLS
   driver_id        INTEGER EXTERNAL,
   pickup_time      DATE "YYYY-MM-DD HH24:MI" NULLIF pickup_time=BLANKS,
   delivery_time    DATE "YYYY-MM-DD HH24:MI" NULLIF delivery_time=BLANKS,
-  delivery_status  CHAR
+  delivery_status  CHAR "REPLACE(REPLACE(:delivery_status, CHR(13), ''), CHR(10), '')"
 )

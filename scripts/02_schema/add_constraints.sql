@@ -1,6 +1,10 @@
--- Context:
--- Smart Food Delivery Management System (ISTE-436)
--- Constraints (FKs, unique keys, and CHECK constraints)
+-- =====================================================================
+-- Smart Food Delivery (ISTE-436)
+-- Phase: 02_schema (step 2/3)
+-- Run as: dev_1 (schema owner)
+-- Purpose: Add PK/FK/UK/CHECK constraints.
+-- Run: @scripts/02_schema/add_constraints.sql
+-- =====================================================================
 
 PROMPT Adding constraints...
 

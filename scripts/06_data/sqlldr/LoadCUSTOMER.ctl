@@ -10,5 +10,5 @@ TRAILING NULLCOLS
   name            CHAR,
   phone           CHAR,
   address         CHAR,
-  status          CHAR
+  status          CHAR "SUBSTR(REPLACE(REPLACE(:status, CHR(13), ''), CHR(10), ''), 1, 1)"
 )

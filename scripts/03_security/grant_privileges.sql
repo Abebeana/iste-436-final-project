@@ -1,10 +1,17 @@
--- Context:
--- ISTE-436 Security Design
--- Grants are done in two layers:
---   1) Object privileges -> application (task) roles
---   2) Application roles -> user (job) roles
---
--- Run this as the schema owner (object owner) after schema and business logic are created.
+-- =====================================================================
+-- Smart Food Delivery (ISTE-436)
+-- Phase: 03_security (step 5/5)
+-- Run as: dev_1 (schema owner). This script also CONNECTs to admin_1 for role-to-role grants.
+-- Purpose: Grant object/execute privileges to roles and assign roles to users.
+-- Run: @scripts/03_security/grant_privileges.sql
+-- NOTE: Run after 02_schema + 04_business_logic (packages) exist.
+-- =====================================================================
+SET DEFINE OFF
+SET SERVEROUTPUT ON
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+
+PROMPT Connecting as dev_1...
+CONNECT dev_1/"Food123"
 
 PROMPT Granting object privileges to application roles...
 
@@ -36,26 +43,18 @@ GRANT SELECT, UPDATE ON customer TO update_customer_role;
 -- Reviews
 GRANT INSERT ON review TO review_order_role;
 
--- Admin full access to application objects
-GRANT SELECT, INSERT, UPDATE, DELETE ON customer TO admin_full_access_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON restaurant TO admin_full_access_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON menu_item TO admin_full_access_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON orders TO admin_full_access_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON order_item TO admin_full_access_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON driver TO admin_full_access_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON delivery TO admin_full_access_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON payment TO admin_full_access_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON review TO admin_full_access_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON order_status_log TO admin_full_access_role;
-
 PROMPT Granting EXECUTE on business logic...
 GRANT EXECUTE ON fd_orders_pkg TO place_order_role;
 GRANT EXECUTE ON fd_delivery_pkg TO deliver_order_role;
-GRANT EXECUTE ON fd_delivery_pkg TO admin_full_access_role;
-GRANT EXECUTE ON fd_analytics_pkg TO admin_full_access_role;
 GRANT EXECUTE ON fd_analytics_pkg TO customer_role;
 
 PROMPT Grouping application roles into user roles...
+
+-- IMPORTANT:
+-- Granting roles to roles requires ADMIN OPTION on those roles or system privilege.
+-- Run this section as admin_1 (DBA).
+PROMPT Switching to admin_1 for role hierarchy grants...
+CONNECT admin_1/"Food123"
 
 -- Customer job role
 GRANT place_order_role TO customer_role;
@@ -71,32 +70,16 @@ GRANT deliver_order_role TO driver_role;
 -- Restaurant job role (browse-only for now)
 GRANT view_menu_role TO restaurant_role;
 
--- Admin job role
-GRANT admin_full_access_role TO admin_role;
-
 -- Developer job role (object creation in your own schema)
--- Note: these are SYSTEM privileges; you typically must run this section as DBA.
-PROMPT Granting developer system privileges (DBA-only; continues on error)...
-WHENEVER SQLERROR CONTINUE
-GRANT CREATE SESSION TO developer_role;
-GRANT CREATE TABLE TO developer_role;
-GRANT CREATE INDEX TO developer_role;
-GRANT CREATE VIEW TO developer_role;
-GRANT CREATE SEQUENCE TO developer_role;
-GRANT CREATE PROCEDURE TO developer_role;
-GRANT CREATE TRIGGER TO developer_role;
-GRANT CREATE TYPE TO developer_role;
-GRANT CREATE CLUSTER TO developer_role;
+-- Note: developer system privileges are granted by admin_1 (DBA) in 03_security/grant_system_privileges.sql
 
--- Powerful DBA-only privileges (use with care; enables access to any schema's tables)
-GRANT INSERT ANY TABLE TO developer_role;
-GRANT UPDATE ANY TABLE TO developer_role;
-GRANT DROP ANY TABLE TO developer_role;
-GRANT ALTER ANY TABLE TO developer_role;
-GRANT COMMENT ANY TABLE TO developer_role;
+PROMPT Switching back to dev_1...
+CONNECT dev_1/"Food123"
 
--- Note: there is no Oracle system privilege named "BACKUP ANY TABLE".
--- Backups are typically performed via RMAN / OS-level access or DBA workflows.
-WHENEVER SQLERROR EXIT SQL.SQLCODE
+PROMPT Granting job roles to users (developer-managed access)...
+GRANT customer_role TO cust_1;
+GRANT customer_role TO cust_2;
+GRANT driver_role TO driver_1;
+GRANT restaurant_role TO rest_1;
 
 PROMPT Done granting privileges.

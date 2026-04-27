@@ -1,4 +1,11 @@
--- Done
+-- =====================================================================
+-- Smart Food Delivery (ISTE-436)
+-- Phase: 05_views
+-- Run as: dev_1 (schema owner)
+-- Purpose: Create column-level views to limit sensitive columns.
+-- Run: @scripts/05_views/column_level_views.sql
+-- =====================================================================
+
 -- Context:
 -- ISTE-436 Views
 -- Column-level views to reduce exposure of sensitive fields.

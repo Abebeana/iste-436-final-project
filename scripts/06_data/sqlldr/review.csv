@@ -1,2 +1,6 @@
-review_id,order_id,rating,comment
+review_id,order_id,rating,review_comment
 1,1,5,Great food!
+2,4,4,Fast delivery and fresh sushi.
+3,5,5,Order was correct and tasty.
+4,7,3,Good dessert but a bit cold.
+5,10,4,Great tacos and churros.

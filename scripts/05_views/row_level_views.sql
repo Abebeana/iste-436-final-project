@@ -1,4 +1,11 @@
--- Done
+-- =====================================================================
+-- Smart Food Delivery (ISTE-436)
+-- Phase: 05_views
+-- Run as: dev_1 (schema owner)
+-- Purpose: Create row-level (row-filtered) views.
+-- Run: @scripts/05_views/row_level_views.sql
+-- =====================================================================
+
 -- Context:
 -- ISTE-436 Views
 -- "Row-level" views used to restrict rows by business rules.

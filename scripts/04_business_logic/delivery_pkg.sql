@@ -1,3 +1,10 @@
+-- =====================================================================
+-- Smart Food Delivery (ISTE-436)
+-- Phase: 04_business_logic
+-- Run as: dev_1 (schema owner)
+-- Run: @scripts/04_business_logic/delivery_pkg.sql
+-- =====================================================================
+
 -- Context:
 -- Smart Food Delivery Management System (ISTE-436)
 -- Transaction procedure(s) for assigning drivers and completing deliveries.

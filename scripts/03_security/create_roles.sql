@@ -1,7 +1,10 @@
--- Context:
--- ISTE-436 Security Design
--- Layered RBAC:
---   Privileges -> Application Roles (task-based) -> User Roles (job-based) -> Users
+-- =====================================================================
+-- Smart Food Delivery (ISTE-436)
+-- Phase: 03_security (step 2/5)
+-- Run as: admin_1 (DBA)
+-- Purpose: Create application roles (task-based) and user roles (job-based).
+-- Run: @scripts/03_security/create_roles.sql
+-- =====================================================================
 
 PROMPT Creating roles...
 
@@ -13,7 +16,6 @@ CREATE ROLE deliver_order_role;
 CREATE ROLE update_customer_role;
 CREATE ROLE review_order_role;
 CREATE ROLE view_menu_role;
-CREATE ROLE admin_full_access_role;
 
 -- User roles (job-based)
 CREATE ROLE customer_role;

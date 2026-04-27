@@ -11,5 +11,5 @@ TRAILING NULLCOLS
   amount         DECIMAL EXTERNAL,
   method         CHAR,
   status         CHAR,
-  payment_time   DATE "YYYY-MM-DD HH24:MI" NULLIF payment_time=BLANKS
+  payment_time   "CASE WHEN TRIM(REPLACE(REPLACE(:payment_time, CHR(13), ''), CHR(10), '')) IS NULL THEN NULL ELSE TO_DATE(REPLACE(REPLACE(:payment_time, CHR(13), ''), CHR(10), ''), 'YYYY-MM-DD HH24:MI') END"
 )

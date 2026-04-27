@@ -10,5 +10,5 @@ TRAILING NULLCOLS
   item_id      INTEGER EXTERNAL,
   quantity     INTEGER EXTERNAL,
   unit_price   DECIMAL EXTERNAL,
-  subtotal     DECIMAL EXTERNAL
+  subtotal     "TO_NUMBER(REPLACE(REPLACE(:subtotal, CHR(13), ''), CHR(10), ''))"
 )

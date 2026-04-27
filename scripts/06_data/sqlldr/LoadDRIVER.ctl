@@ -10,5 +10,5 @@ TRAILING NULLCOLS
   name             CHAR,
   status           CHAR,
   total_deliveries INTEGER EXTERNAL,
-  avg_rating       DECIMAL EXTERNAL NULLIF avg_rating=BLANKS
+  avg_rating       "CASE WHEN TRIM(REPLACE(REPLACE(:avg_rating, CHR(13), ''), CHR(10), '')) IS NULL THEN NULL ELSE TO_NUMBER(REPLACE(REPLACE(:avg_rating, CHR(13), ''), CHR(10), '')) END"
 )

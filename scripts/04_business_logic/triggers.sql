@@ -1,3 +1,11 @@
+-- =====================================================================
+-- Smart Food Delivery (ISTE-436)
+-- Phase: 04_business_logic
+-- Run as: dev_1 (schema owner)
+-- Purpose: Create triggers.
+-- Run: @scripts/04_business_logic/triggers.sql
+-- =====================================================================
+
 -- Context:
 -- Smart Food Delivery Management System (ISTE-436)
 -- Triggers
@@ -8,7 +16,7 @@ PROMPT Creating triggers...
 CREATE OR REPLACE TRIGGER trg_orders_status_log
 AFTER UPDATE OF status ON orders
 FOR EACH ROW
-WHEN (NVL(:OLD.status, ' ') <> NVL(:NEW.status, ' '))
+WHEN (NVL(OLD.status, ' ') <> NVL(NEW.status, ' '))
 BEGIN
   INSERT INTO order_status_log(order_id, old_status, new_status, change_time)
   VALUES (:NEW.order_id, :OLD.status, :NEW.status, SYSDATE);
@@ -19,7 +27,7 @@ END;
 CREATE OR REPLACE TRIGGER trg_orders_delivered_driver_stats
 AFTER UPDATE OF status ON orders
 FOR EACH ROW
-WHEN (NVL(:OLD.status, ' ') <> NVL(:NEW.status, ' ') AND :NEW.status = 'Delivered')
+WHEN (NVL(OLD.status, ' ') <> NVL(NEW.status, ' ') AND NEW.status = 'Delivered')
 DECLARE
   v_driver_id delivery.driver_id%TYPE;
 BEGIN

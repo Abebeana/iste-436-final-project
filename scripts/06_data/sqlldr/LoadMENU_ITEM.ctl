@@ -12,5 +12,5 @@ TRAILING NULLCOLS
   price           DECIMAL EXTERNAL,
   category        CHAR,
   is_available    CHAR,
-  stock_qty       INTEGER EXTERNAL
+  stock_qty       "TO_NUMBER(REPLACE(REPLACE(:stock_qty, CHR(13), ''), CHR(10), ''))"
 )

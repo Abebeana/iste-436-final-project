@@ -1,3 +1,17 @@
 item_id,restaurant_id,name,price,category,is_available,stock_qty
 1,1,ChickenBowl,12.50,Meal,Y,1
 2,1,VeggieBowl,10.00,Meal,Y,10
+3,2,Spaghetti,14.00,Meal,Y,25
+4,2,GarlicBread,5.00,Meal,Y,40
+5,2,Tiramisu,6.50,Dessert,Y,20
+6,3,SalmonRoll,9.50,Meal,Y,50
+7,3,MisoSoup,3.50,Meal,Y,60
+8,3,GreenTea,2.00,Drink,Y,80
+9,4,BeefTaco,4.00,Meal,Y,100
+10,4,Soda,1.75,Drink,Y,200
+11,4,Churros,3.00,Dessert,Y,30
+12,5,PadThai,13.25,Meal,Y,35
+13,5,ThaiIcedTea,3.25,Drink,Y,70
+14,5,MangoSticky,6.00,Dessert,Y,15
+15,1,Fries,3.00,Meal,Y,100
+16,1,Milkshake,4.50,Drink,Y,50
